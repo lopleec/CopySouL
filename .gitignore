@@ -1,0 +1,15 @@
+.DS_Store
+
+# Xcode local state
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+
+# SwiftPM / build artifacts
+.build/
+.swiftpm/
+
+# Local secrets
+*.env
+*.env.local

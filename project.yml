@@ -1,0 +1,64 @@
+name: CopySouL
+options:
+  bundleIdPrefix: com.luccazh
+  deploymentTarget:
+    macOS: "15.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+targets:
+  CopySouL:
+    type: application
+    platform: macOS
+    sources:
+      - path: CopySouL
+    dependencies:
+      - sdk: libsqlite3.tbd
+      - sdk: Security.framework
+      - sdk: ScreenCaptureKit.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.luccazh.CopySouL
+        PRODUCT_NAME: CopySouL
+        INFOPLIST_FILE: CopySouL/Resources/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        ENABLE_HARDENED_RUNTIME: YES
+  CopySouLTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: CopySouLTests
+    dependencies:
+      - target: CopySouL
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.luccazh.CopySouLTests
+        GENERATE_INFOPLIST_FILE: YES
+  CopySouLUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - path: CopySouLUITests
+    dependencies:
+      - target: CopySouL
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.luccazh.CopySouLUITests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  CopySouL:
+    build:
+      targets:
+        CopySouL: all
+    test:
+      targets:
+        - CopySouLTests
+  CopySouL UI:
+    build:
+      targets:
+        CopySouL: all
+        CopySouLUITests: [test]
+    test:
+      targets:
+        - CopySouLUITests
